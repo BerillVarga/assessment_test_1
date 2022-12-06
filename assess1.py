@@ -54,33 +54,35 @@ def save_changes():
     conn.close()
 
 
+def main():
+    # Information about the program and what is does
+    print('Hello and welcome to the this program, available commands:')
+    print('  list   - list information about the contacts\n  insert - inserting new data')
+    print('  delete - delete a person\n  quit   - quit the program')
 
-# Information about the program and what is does
-print('Hello and welcome to the this program, available commands:')
-print('  list   - list information about the contacts\n  insert - inserting new data')
-print('  delete - delete a person\n  quit   - quit the program')
+    while True: 
+        cmd = input("Command: ").strip().upper()
+        if cmd == "LIST":
+            c_list = read_contact_list()
+            for item in c_list:
+                print(item)
+        elif cmd == "INSERT":
+            first_name = input("  First name: ")
+            last_name = input("  Last name: ")
+            title =  input("  Title: ")
+            organization = input("  Organization: ")
+            insert_data(first_name, last_name, title, organization)
+        elif cmd == "DELETE":
+            first_name = input("  First name: ")
+            last_name = input("  Last name: ")
+            delete_data(first_name, last_name)
+        elif cmd == "QUIT":
+            save_changes()
+            exit()
+        else:
+            print('  Unknown command:', cmd)
 
-while True: 
-    cmd = input("Command: ").strip().upper()
-    if cmd == "LIST":
-        c_list = read_contact_list()
-        for item in c_list:
-            print(item)
-    elif cmd == "INSERT":
-        first_name = input("  First name: ")
-        last_name = input("  Last name: ")
-        title =  input("  Title: ")
-        organization = input("  Organization: ")
-        insert_data(first_name, last_name, title, organization)
-    elif cmd == "DELETE":
-        first_name = input("  First name: ")
-        last_name = input("  Last name: ")
-        delete_data(first_name, last_name)
-    elif cmd == "QUIT":
-        save_changes()
-        exit()
-    else:
-        print('  Unknown command:', cmd)
-
+if __name__ == '__main__':
+    main()
 
 
