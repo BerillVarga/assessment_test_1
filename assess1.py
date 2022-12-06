@@ -8,7 +8,7 @@ def connection():
             port="5432",
             database="assessmentdb",
             user="postgres",
-            password = '***'
+            password = 'dataLove'
             )
     return conn
 
@@ -63,7 +63,9 @@ print('  delete - delete a person\n  quit   - quit the program')
 while True: 
     cmd = input("Command: ").strip().upper()
     if cmd == "LIST":
-        print(read_contact_list())
+        c_list = read_contact_list()
+        for item in c_list:
+            print(item)
     elif cmd == "INSERT":
         first_name = input("  First name: ")
         last_name = input("  Last name: ")
